@@ -4,6 +4,9 @@ import { v4 } from 'uuid';
 import c from './../constants';
 
 function NewPostForm(props){
+  let _author;
+  let _content;
+  let _tags;
 
   function handleNewPostFormSubmission(event) {
     const { dispatch } = props;
@@ -15,12 +18,12 @@ function NewPostForm(props){
       tags: _tags.value,
       id: v4(),
       likes: 0,
-      timeStamp: new Date()
+      timeStamp: (new Date()).toString()
     };
     dispatch(action);
     _author.value = '';
-    _location.value = '';
-    _issue.value = '';
+    _content.value = '';
+    _tags.value = '';
   }
 
   return (

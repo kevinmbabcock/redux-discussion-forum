@@ -5,12 +5,11 @@ import Downvote from './Downvote';
 import PropTypes from 'prop-types';
 
 function PostList(props){
-  console.log(props);
+  // console.log(props);
   return (
     <div>
-      {Object.keys(props.postList).map(function(postId) {
+      {Object.keys(props.postList).map(function(postId, i) {
         var post  = props.postList[postId];
-
         return <div>
           <Post
             author={post.author}
@@ -18,11 +17,11 @@ function PostList(props){
             tags={post.tags}
             timeStamp={post.timeStamp}
             likes={post.likes}
-            key={postId}
-            postId={postId} />
+            key={post.id}
+            postId={post.id} />
           <div>
-            <Upvote postId={postId}/>
-            <Downvote postId={postId}/>
+            <Upvote postId={post.id}/>
+            <Downvote postId={post.id}/>
           </div>
         </div>;
       })}

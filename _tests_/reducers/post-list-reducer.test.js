@@ -40,10 +40,10 @@ describe('postListReducer', () => {
     });
   });
 
-  test('Should update likes property on like or dislike click', () => {
+  test('Should increase likes property on like', () => {
     const { author, content, tags, id, likes, timeStamp } = samplePost;
     action = {
-      type: c.UPDATE_LIKES,
+      type: c.UPVOTE_POST,
       author: author,
       content: content,
       tags: tags,
@@ -58,6 +58,29 @@ describe('postListReducer', () => {
         tags: 'steve',
         id: 0,
         likes: 1,
+        timeStamp: 'Thu Feb 22 2018 14:29:45 GMT-0800 (PST)'
+      }
+    });
+  });
+
+  test('Should decrease likes property on dislike', () => {
+    const { author, content, tags, id, likes, timeStamp } = samplePost;
+    action = {
+      type: c.DOWNVOTE_POST,
+      author: author,
+      content: content,
+      tags: tags,
+      id: id,
+      likes: likes,
+      timeStamp: timeStamp
+    };
+    expect(postListReducer({ [id] : samplePost }, action)).toEqual({
+      [id] : {
+        author: 'Steve',
+        content: 'This is Steve\'s post',
+        tags: 'steve',
+        id: 0,
+        likes: -1,
         timeStamp: 'Thu Feb 22 2018 14:29:45 GMT-0800 (PST)'
       }
     });

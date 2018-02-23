@@ -19,8 +19,7 @@ export default (state = {}, action) => {
     return newState;
   }
 
-  case c.UPDATE_LIKES: {
-    // const newPost = Object.assign({}, state[id], {likes});
+  case c.UPVOTE_POST: {
     let newLikes = likes;
     newLikes++;
     newState = Object.assign({}, state, {
@@ -35,6 +34,23 @@ export default (state = {}, action) => {
     });
     return newState;
   }
+
+  case c.DOWNVOTE_POST: {
+    let newLikes = likes;
+    newLikes--;
+    newState = Object.assign({}, state, {
+      [id]: {
+        author: author,
+        content: content,
+        tags: tags,
+        id: id,
+        likes: newLikes,
+        timeStamp: timeStamp
+      }
+    });
+    return newState;
+  }
+
   default:
     return state;
   }

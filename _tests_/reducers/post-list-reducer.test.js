@@ -16,4 +16,51 @@ describe('postListReducer', () => {
   test('Should return default state if no action type is recognized', () => {
     expect(postListReducer({}, { type: null })).toEqual({});
   });
+
+  test('Should successfully add new post to masterPostList', () => {
+    const { author, content, tags, id, likes, timeStamp } = samplePost;
+    action = {
+      type: c.ADD_POST,
+      author: author,
+      content: content,
+      tags: tags,
+      id: id,
+      likes: likes,
+      timeStamp: timeStamp
+    };
+    expect(postListReducer({}, action)).toEqual({
+      [id] : {
+        author: author,
+        content: content,
+        tags: tags,
+        id: id,
+        likes: likes,
+        timeStamp: timeStamp
+      }
+    });
+  });
+
+  test('Should update likes property on like or dislike click', () => {
+    const { author, content, tags, id, likes, timeStamp } = samplePost;
+    action = {
+      type: c.UPDATE_LIKES,
+      author: author,
+      content: content,
+      tags: tags,
+      id: id,
+      likes: likes,
+      timeStamp: timeStamp
+    };
+    expect(postListReducer({ [id] : samplePost }, action)).toEqual({
+      [id] : {
+        author: 'Steve',
+        content: 'This is Steve\'s post',
+        tags: 'steve',
+        id: 0,
+        likes: 1,
+        timeStamp: 'Thu Feb 22 2018 14:29:45 GMT-0800 (PST)'
+      }
+    });
+  });
+
 })

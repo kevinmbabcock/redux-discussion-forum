@@ -6,7 +6,7 @@ export default (state = {}, action) => {
 
   switch (action.type) {
   case c.ADD_POST: {
-    let newState = Object.assign({}, state, {
+    newState = Object.assign({}, state, {
       [id]: {
         author: author,
         content: content,
@@ -18,14 +18,23 @@ export default (state = {}, action) => {
     });
     return newState;
   }
-  //
-  // case c.UPDATE_LIKES: {
-  //   const newPost = Object.assign({}, state[id], {likes});
-  //   newState = Object.assign({}. state, {
-  //     [id]: newPost
-  //   });
-  //   return newState;
-  // }
+
+  case c.UPDATE_LIKES: {
+    // const newPost = Object.assign({}, state[id], {likes});
+    let newLikes = likes;
+    newLikes++;
+    newState = Object.assign({}, state, {
+      [id]: {
+        author: author,
+        content: content,
+        tags: tags,
+        id: id,
+        likes: newLikes,
+        timeStamp: timeStamp
+      }
+    });
+    return newState;
+  }
   default:
     return state;
   }

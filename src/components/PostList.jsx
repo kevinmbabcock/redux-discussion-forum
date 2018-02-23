@@ -5,10 +5,12 @@ import Downvote from './Downvote';
 import PropTypes from 'prop-types';
 
 function PostList(props){
+  console.log(props);
   return (
     <div>
       {Object.keys(props.postList).map(function(postId) {
         var post  = props.postList[postId];
+
         return <div>
           <Post
             author={post.author}

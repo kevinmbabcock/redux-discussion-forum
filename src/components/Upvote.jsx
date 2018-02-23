@@ -5,24 +5,29 @@ import c from './../constants';
 
 function Upvote(props) {
 
-  function handleUpvoteButtonClick(postId) {
+  function handleUpvoteButtonClick(post) {
     const { dispatch } = props;
     const action = {
       type: c.UPVOTE_POST,
-      postId: postId
+      author: post.author,
+      content: post.content,
+      tags: post.tags,
+      id: post.id,
+      likes: post.likes,
+      timeStamp: post.timeStamp
     };
     dispatch(action);
   }
 
   return (
-    <div onClick={() => {handleUpvoteButtonClick(props.postId);}}>
+    <div onClick={() => {handleUpvoteButtonClick(props.post);}}>
       <button className='btn btn-primary'>Upvote</button>
     </div>
   );
 }
 
 Upvote.propTypes = {
-  postId: PropTypes.string.isRequired
+  post: PropTypes.object.isRequired
 };
 
 export default connect()(Upvote);

@@ -19,9 +19,12 @@ function PostList(props){
             likes={post.likes}
             key={post.id}
             postId={post.id} />
-          <div>
-            <Upvote postId={post.id}/>
-            <Downvote postId={post.id}/>
+          <div className='row'>
+            <div className='col-sm-12'>
+              <Upvote post={post}/>
+              <br />
+              <Downvote post={post}/>
+            </div>
           </div>
         </div>;
       })}

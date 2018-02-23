@@ -5,24 +5,29 @@ import c from './../constants';
 
 function Downvote(props) {
 
-  function handleDownvoteButtonClick(postId) {
+  function handleDownvoteButtonClick(post) {
     const { dispatch } = props;
     const action = {
       type: c.DOWNVOTE_POST,
-      postId: postId
+      author: post.author,
+      content: post.content,
+      tags: post.tags,
+      id: post.id,
+      likes: post.likes,
+      timeStamp: post.timeStamp
     };
     dispatch(action);
   }
 
   return (
-    <div onClick={() => {handleDownvoteButtonClick(props.postId);}}>
+    <div onClick={() => {handleDownvoteButtonClick(props.post);}}>
       <button className='btn btn-primary'>Downvote</button>
     </div>
   );
 }
 
 Downvote.propTypes = {
-  postId: PropTypes.string.isRequired
+  post: PropTypes.object.isRequired
 };
 
 export default connect()(Downvote);

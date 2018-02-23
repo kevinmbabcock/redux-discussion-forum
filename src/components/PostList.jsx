@@ -8,7 +8,7 @@ function PostList(props){
   // console.log(props);
   return (
     <div>
-      {Object.keys(props.postList).map(function(postId, i) {
+      {Object.keys(props.postList).map(function(postId) {
         var post  = props.postList[postId];
         return <div>
           <Post

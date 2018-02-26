@@ -10,12 +10,12 @@ function PostList(props){
       <h5>Current Posts:</h5>
     </div>;
 
-  if (props.postList.length != 0) {
+  if (Object.keys(props.postList).length != 0) {
     return (
       <div>
         { header }
-        {props.postList.map(function(postId, i) {
-          var post  = props.postList[i];
+        {Object.keys(props.postList).map(function(postId) {
+          var post  = props.postList[postId];
           // code must started in the same line as return statement or the code must be wrapped in brackets
           return (
               <div>
@@ -50,7 +50,7 @@ function PostList(props){
 }
 
 PostList.propTypes = {
-  postList: PropTypes.array
+  postList: PropTypes.object
 };
 
 

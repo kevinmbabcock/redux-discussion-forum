@@ -13,20 +13,26 @@ function PostListContainer(props){
 }
 
 PostListContainer.propTypes = {
-  masterPostList: PropTypes.array,
+  masterPostList: PropTypes.object,
   dispatch: PropTypes.func
 };
 
 const mapStateToProps = state => {
   if (Object.keys(state).length != 0) {
+    console.log(state);
     let newState = Object.values(state);
-    let returnedList = newState.sort(function(a,b) {return b.likes - a.likes ;})
+    let newPostList = newState.sort(function(a,b) {return b.likes - a.likes ;})
+    let returnedState = {};
+    newPostList.forEach(function(post, i) {
+      returnedState[post.id] = post
+    })
+    console.log(returnedState);
     return {
-      masterPostList: returnedList
+      masterPostList: returnedState
     };
   } else {
     return {
-      masterPostList: []
+      masterPostList: state
     };
   }
 };

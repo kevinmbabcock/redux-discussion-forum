@@ -7,8 +7,14 @@ function App(){
   return (
     <div className="container">
       <Header />
-      <PostListContainer />
-      <NewPostForm />
+      <div className='row'>
+        <div className='col-md-6'>
+          <PostListContainer />
+        </div>
+        <div className='col-md-6'>
+          <NewPostForm />
+        </div>
+      </div>
     </div>
   );
 }

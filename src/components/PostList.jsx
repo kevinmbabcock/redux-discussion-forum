@@ -18,7 +18,7 @@ function PostList(props){
           var post  = props.postList[postId];
           // code must started in the same line as return statement or the code must be wrapped in brackets
           return (
-              <div>
+              <div style={{backgroundColor: 'lightGrey', padding: '20px'}}>
                   <Post
                       author={post.author}
                       content={post.content}
@@ -35,6 +35,7 @@ function PostList(props){
                         <Downvote post={post}/>
                       </div>
                     </div>
+                    <hr></hr>
                   </div>);
         })}
       </div>

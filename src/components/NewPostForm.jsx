@@ -27,7 +27,7 @@ function NewPostForm(props){
   }
 
   return (
-    <div>
+    <div style={{backgroundColor: 'lightBlue', padding: '20px'}}>
       <br />
       <h5>Please fill out the form below to make your post:</h5>
       <br />
